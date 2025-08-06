@@ -1,5 +1,5 @@
-import './globals.css'
-import Navbar from '../components/Navbar'
+import '../globals.css'
+import Navbar from '../../components/Navbar'
 
 export const metadata = {
   title: "Sant'Andrea Longevity Center | Longevità Bari | Bari, Metropolitan City of Bari, Italy",
@@ -10,12 +10,9 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="it">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet" />
-      </head>
       <body>
         <Navbar />
-        <main className="container">
+        <main className="mx-auto w-full p-4 container">
           {children}
         </main>
       </body>
