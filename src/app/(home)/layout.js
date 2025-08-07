@@ -3,14 +3,9 @@ import FullPageCarousel from '@/components/FullPageCarousel'
 export default function HomeLayout({ children }) {
   const slides = [
     {
-      image: "https://static.wixstatic.com/media/a886de_0fe629df75484824b8844fe6b57e9fed~mv2.jpg/v1/fill/w_1024,h_1024,fp_0.41_0.41,q_90,enc_avif,quality_auto/a886de_0fe629df75484824b8844fe6b57e9fed~mv2.jpg",
-      link: "/about",
-      content: (
-        <div className="w-full h-full flex flex-col items-center justify-center text-white">
-          <h1 className="text-4xl font-bold">Sant&apos;Andrea Longevity Center</h1>
-          <p className="text-2xl">Vitality & Longevity</p>
-        </div>
-      )
+      image: "https://analisisantandrea.it/images/Longevity_x_SantAndrea.png",
+      link: "https://www.longevitycenter.it/",
+      content: ""
     },
     {
       image: "https://static.wixstatic.com/media/a886de_2c012a7a2eec4442a22069be3c04384a~mv2.jpeg/v1/fill/w_1024,h_1024,fp_0.49_0.46,q_90,enc_avif,quality_auto/a886de_2c012a7a2eec4442a22069be3c04384a~mv2.jpeg",

@@ -3,7 +3,13 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaPhone,
+  FaEnvelope,
+} from "react-icons/fa";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,71 +27,102 @@ export default function Navbar() {
       {/* Topbar social con animazione Y */}
       <div
         className={`
-          w-full bg-blue-600 text-white text-sm flex justify-end items-center px-6 gap-4 z-50
+          w-full bg-[#104071] text-white text-sm flex justify-around items-center px-6 gap-4 z-50
           fixed top-0 left-0
-          transition-transform duration-500
+          transition-transform duration-500 mx-auto
           ${scrolled ? "-translate-y-full" : "translate-y-0"}
         `}
         style={{ height: "40px" }} // imposta l'altezza della topbar
       >
-        <a
-          href="https://www.instagram.com/santandrea_laboratorio_analisi/?fbclid=IwAR12TuCvaLSoc8NTW9amHzMMETGVgKT4DE5OpPAeW6r9yVGyWBLlRD48OMw"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-gray-300 transition"
-        >
-          <FaInstagram size={20} />
-        </a>
-        <a
-          href="https://www.facebook.com/laboratorioanalisisantandrea"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-gray-300 transition"
-        >
-          <FaFacebookF size={20} />
-        </a>
-        <a
-          href="https://www.linkedin.com/company/sant-andrea-longevity-center/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-gray-300 transition"
-        >
-          <FaLinkedinIn size={20} />
-        </a>
+        <div className="flex items-center gap-2">
+          <div>
+            <a
+              href="tel:080/3322648080/3529406"
+              className="flex items-center hover:text-gray-300 transition"
+            >
+              <FaPhone size={16} className="rotate-90" />
+              <span className="ml-2">080/3322648 - 080/3529406</span>
+            </a>
+          </div>
+          <div>
+            <a
+              href="tel:370/3428578"
+              className="flex items-center hover:text-gray-300 transition"
+            >
+              <FaPhone size={16} className="rotate-90" />
+              <span className="ml-2">370/3428578</span>
+            </a>
+          </div>
+          <div>
+            <a
+              href="mailto:analisisantandrea@gmail.com"
+              className="flex items-center hover:text-gray-300 transition"
+            >
+              <FaEnvelope size={16} />
+              <span className="ml-2">analisisantandrea@gmail.com</span>
+            </a>
+
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://www.instagram.com/santandrea_laboratorio_analisi/?fbclid=IwAR12TuCvaLSoc8NTW9amHzMMETGVgKT4DE5OpPAeW6r9yVGyWBLlRD48OMw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-300 transition"
+          >
+            <FaInstagram size={20} />
+          </a>
+          <a
+            href="https://www.facebook.com/laboratorioanalisisantandrea"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-300 transition"
+          >
+            <FaFacebookF size={20} />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/sant-andrea-longevity-center/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-300 transition"
+          >
+            <FaLinkedinIn size={20} />
+          </a>
+        </div>
       </div>
 
       {/* Navbar principale */}
       <nav
         className={`
-          fixed left-0 w-full z-40 transition-all duration-300
+          fixed left-0 w-full z-40 transition-all duration-300 uppercase font-bold font-[Oswald, sans-serif] text-lg
           ${
             scrolled
-              ? "bg-white/80 backdrop-blur-md shadow text-gray-900 top-0"
-              : "bg-white text-gray-900 top-10"
+              ? "bg-white/80 backdrop-blur-md shadow text-[#104071] top-0"
+              : "bg-white text-[#104071] top-10"
           }
         `}
         style={{ minHeight: "64px" }} // imposta l'altezza minima della navbar principale
       >
-        <div className="container mx-auto flex items-center justify-between p-4">
+        <div className="container mx-auto flex items-center justify-around p-4">
           <Link
             href="/"
             className="hover:opacity-80 text-xl font-bold hover:text-grey transition"
           >
             <img
-              src="/icon.png"
+              src="https://www.analisisantandrea.it/images/logo.svg"
               alt="Logo"
-              className="w-10 h-10 inline-block"
+              className="w-[200px] h-10 inline-block"
             />
-            Sant&apos;Andrea Longevity Center
           </Link>
           <div className="space-x-4 flex items-center">
             <Link
               href="/"
               className="hover:opacity-80 transition-all duration-200"
             >
-              Home
+              Servizi al paziente
             </Link>
-            <div className="relative group">
+            {/* <div className="relative group">
               <div className="hover:opacity-80 transition-all duration-200 flex items-center cursor-pointer select-none">
                 Longevità
               </div>
@@ -158,14 +195,20 @@ export default function Navbar() {
                   Metabolism
                 </Link>
               </div>
-            </div>
+            </div> */}
+            <Link
+              href="/about"
+              className="hover:opacity-80 transition-all duration-200"
+            >
+              Chi Siamo
+            </Link>
             <Link
               href="/contact"
               className="hover:opacity-80 transition-all duration-200"
             >
-              Ricerca e Sviluppo
+              Contatti
             </Link>
-            <div className="relative group">
+            {/* <div className="relative group">
               <div className="hover:opacity-80 transition-all duration-200 flex items-center cursor-pointer select-none">
                 Professionisti
               </div>
@@ -196,7 +239,7 @@ export default function Navbar() {
                   Post
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>

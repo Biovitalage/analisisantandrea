@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
@@ -18,9 +19,9 @@ export default function FullPageCarousel({ slides }) {
 
   return (
     <div 
-      className={`w-full h-screen flex items-center justify-center bg-black
+      className={`w-full h-screen flex items-center justify-center
         transition-all duration-1000 ease-out
-        ${isVisible 
+        ${isVisible
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 -translate-y-10'
         }
@@ -39,20 +40,14 @@ export default function FullPageCarousel({ slides }) {
               className="w-full h-full flex-shrink-0 flex items-center justify-center group cursor-pointer relative"
               style={{ minWidth: "100%", minHeight: "100%" }}
             >
-              <div
-                className={`
-                  absolute inset-0 w-full h-full z-0
-                  transition-transform duration-700 ease-in-out
-                  opacity-50
-                  group-hover:scale-110
-                `}
-                style={{
-                  backgroundImage: `url(${slide.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  // transition: "transform 0.7s cubic-bezier(0.4,0,0.2,1)" // TOGLI questa riga!
-                }}
+              {/* IMMAGINE SOVRAPPOSTA */}
+              <img
+                src={slide.image}
+                alt={slide.alt || `Slide ${index + 1}`}
+                className="absolute inset-0 w-full h-full object-contain z-0 transition-transform duration-700 ease-in-out group-hover:scale-110"
+                draggable={false}
               />
+              {/* CONTENUTO */}
               <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
                 {slide.content}
               </div>
