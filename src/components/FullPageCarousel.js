@@ -7,6 +7,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 export default function FullPageCarousel({ slides }) {
   const [current, setCurrent] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   const total = slides.length
 
   useEffect(() => {
@@ -17,17 +18,30 @@ export default function FullPageCarousel({ slides }) {
   const goToPrev = () => setCurrent((prev) => (prev === 0 ? total - 1 : prev - 1))
   const goToNext = () => setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1))
 
+  // Auto-scroll
+  useEffect(() => {
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        goToNext()
+      }, 4000)
+
+      return () => clearInterval(interval)
+    }
+  }, [current, isHovered])
+
   return (
     <div 
-      className={`w-full h-screen flex items-center justify-center
-        transition-all duration-1000 ease-out
+      className={`w-full h-[calc(100vh-80px)] flex items-center justify-center
+        transition-all duration-1000 ease-out mt-[5%]
         ${isVisible
           ? 'opacity-100 translate-y-0' 
           : 'opacity-0 -translate-y-10'
         }
       `}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative w-full h-full overflow-hidden">
+      <div className="relative w-full h-full overflow-hidden rounded-lg">
         {/* Slides container */}
         <div 
           className="flex w-full h-full transition-transform duration-700 ease-in-out"
@@ -37,18 +51,20 @@ export default function FullPageCarousel({ slides }) {
             <Link
               href={slide.link}
               key={index}
-              className="w-full h-full flex-shrink-0 flex items-center justify-center group cursor-pointer relative"
+              className="w-full h-full flex-shrink-0 flex items-center justify-center group cursor-pointer relative overflow-hidden"
               style={{ minWidth: "100%", minHeight: "100%" }}
             >
               {/* IMMAGINE SOVRAPPOSTA */}
               <img
                 src={slide.image}
                 alt={slide.alt || `Slide ${index + 1}`}
-                className="absolute inset-0 w-full h-full object-contain z-0 transition-transform duration-700 ease-in-out group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-700 ease-in-out"
                 draggable={false}
               />
+              {/* OVERLAY SCURO PER MIGLIORARE LEGGIBILITÀ */}
+              <div className="absolute inset-0 z-5"></div>
               {/* CONTENUTO */}
-              <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
+              <div className="relative z-10 flex flex-col items-center justify-center w-full h-full p-8">
                 {slide.content}
               </div>
             </Link>

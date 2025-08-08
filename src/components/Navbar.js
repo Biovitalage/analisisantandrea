@@ -118,7 +118,7 @@ export default function Navbar() {
           <div className="space-x-4 flex items-center">
             <Link
               href="/"
-              className="hover:opacity-80 transition-all duration-200"
+              className="hover:opacity-80 text-[15px] transition-all duration-200"
             >
               Servizi al paziente
             </Link>
@@ -198,13 +198,13 @@ export default function Navbar() {
             </div> */}
             <Link
               href="/about"
-              className="hover:opacity-80 transition-all duration-200"
+              className="hover:opacity-80 text-[15px] transition-all duration-200"
             >
               Chi Siamo
             </Link>
             <Link
               href="/contact"
-              className="hover:opacity-80 transition-all duration-200"
+              className="hover:opacity-80 text-[15px] transition-all duration-200"
             >
               Contatti
             </Link>
