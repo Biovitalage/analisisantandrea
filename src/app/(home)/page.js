@@ -11,7 +11,7 @@ import {
 export default function Home() {
   return (
     <section className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 mx-[5%] mt-[3%] mb-[3%] gap-4 width-[72%]">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 mx-[5%] mt-[3%] mb-[3%] gap-4 w-[72%]">
         <div className="h-[60px] p-6 bg-[#1073b6] text-white gap-4 rounded-md flex items-center justify-center">
           <div>
             <FaMicroscope size={40} />
